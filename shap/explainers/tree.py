@@ -63,7 +63,7 @@ class TreeExplainer(Explainer):
         elif str(type(model)).endswith("sklearn.tree.tree.DecisionTreeClassifier'>"):
             self.trees = [Tree(model.tree_)]
             self.less_than_or_equal = True
-        elif str(type(model)).endswith("sklearn.ensemble.forest.RandomForestClassifier'>"):
+        elif str(type(model)).endswith("sklearn.ensemble.forest.RandomForestClassifier'>") or str(type(model)).endswith("sklearn_pipelines.estimators.ensemble.RandomForestClassifier'>"):
             self.trees = [Tree(e.tree_, normalize=True) for e in model.estimators_]
             self.less_than_or_equal = True
         elif str(type(model)).endswith("sklearn.ensemble.forest.ExtraTreesClassifier'>"): # TODO: add unit test for this case
